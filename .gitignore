@@ -2,6 +2,9 @@
 **/.terraform/*
 *.terraform*
 
+# environment python 
+*env
+
 # .tfstate files
 *.tfstate
 *.tfstate.*
