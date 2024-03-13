@@ -61,7 +61,7 @@ def get_rankings(event, context):
                 rider_name = rider.find_element(
                     By.CLASS_NAME, 'rankingTables__row__profile--name').text
                 rider_team = rider.find_element(
-                    By.CSS_SELECTOR, '.break-line.team').find_element(By.TAG_NAME, 'a').text
+                    By.CLASS_NAME, 'break-line.team').text
 
                 rider_data["rider_rank"] = rider_rank
                 rider_data["rider_number"] = rider_number

@@ -17,9 +17,9 @@ url = 'https://www.letour.fr/en/rankings'
 #     ChromeDriverManager().install()), options=options)
 
 # Launch Browser (local testing)
-# driver = webdriver.Chrome(service=ChromeService(
-#     ChromeDriverManager().install()))
-# driver.maximize_window()
+driver = webdriver.Chrome(service=ChromeService(
+    ChromeDriverManager().install()))
+driver.maximize_window()
 
 driver.get(url)
 
@@ -76,7 +76,7 @@ try:
             rider_name = rider.find_element(
                 By.CLASS_NAME, 'rankingTables__row__profile--name').text
             rider_team = rider.find_element(
-                By.CSS_SELECTOR, '.break-line.team').find_element(By.TAG_NAME, 'a').text
+                By.CLASS_NAME, 'break-line.team').text
 
             rider_data["rider_rank"] = rider_rank
             rider_data["rider_number"] = rider_number
@@ -88,7 +88,7 @@ try:
             rider_data = {}
 
         df = pd.DataFrame({'riders_data': riders_data})
-        df.to_json('./data/' + ranking_tab_text.lower() + ".json")
+        df.to_json('/Users/imahamat/Documents/vscode-apps/mercury-project/aws-terraform-github-actions/app/src/data/' + ranking_tab_text.lower() + ".json")
         riders_data = []
 except Exception as e:
     print('Error processing Rider data.')
